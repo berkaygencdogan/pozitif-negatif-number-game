@@ -9,26 +9,19 @@ import React, { useState } from "react";
 import GradientText from "react-native-gradient-texts";
 import Feather from "@expo/vector-icons/Feather";
 import AntDesign from "@expo/vector-icons/AntDesign";
-import { useNavigation } from "@react-navigation/native";
+import GreenButton from "@/components/GreenButton";
+import ColorfulText from "@/components/ColorfulText";
 
 const Login = ({ isLogin, router }) => {
   const [mailValue, setMailValue] = useState("");
   const [passValue, setPassValue] = useState("");
   const [isMailFocused, setIsMailFocused] = useState(false);
   const [isPassFocused, setIsPassFocused] = useState(false);
-  const navigation = useNavigation();
+
   return (
     <View style={styles.loginContainer}>
       <View style={styles.gameName}>
-        <GradientText
-          text={"NUMBER GAME"}
-          fontSize={40}
-          isGradientFill
-          isGradientStroke
-          strokeWidth={2}
-          gradientColors={["#9E01B7", "#14E585"]}
-          fontFamily={"Gill Sans"}
-        />
+        <ColorfulText text={"NUMBER GAME"} size={40} />
       </View>
       <View style={styles.title}>
         <Text style={styles.loginTitle}>Login to Your Account</Text>
@@ -68,14 +61,7 @@ const Login = ({ isLogin, router }) => {
         ></TextInput>
       </View>
       <View style={styles.loginButtonContainer}>
-        <TouchableOpacity
-          style={styles.loginButton}
-          onPress={() => router.push("/Game")}
-        >
-          <Text style={{ color: "white", fontSize: 24, fontWeight: "bold" }}>
-            Login
-          </Text>
-        </TouchableOpacity>
+        <GreenButton name={"Login"} router={router} />
       </View>
       <View style={styles.signUp}>
         <TouchableOpacity onPress={() => isLogin(false)}>
@@ -117,16 +103,6 @@ const styles = StyleSheet.create({
   },
   loginButtonContainer: {
     flex: 2,
-  },
-  loginButton: {
-    width: "95%",
-    height: 45,
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    borderWidth: 1,
-    borderRadius: 20,
-    borderColor: "#14E585",
   },
   emailContainer: {
     flex: 1,

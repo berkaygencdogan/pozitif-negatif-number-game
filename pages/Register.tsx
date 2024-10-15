@@ -9,8 +9,10 @@ import React, { useState } from "react";
 import GradientText from "react-native-gradient-texts";
 import Feather from "@expo/vector-icons/Feather";
 import AntDesign from "@expo/vector-icons/AntDesign";
+import GreenButton from "@/components/GreenButton";
+import ColorfulText from "@/components/ColorfulText";
 
-const Register = ({ isRegister }) => {
+const Register = ({ isRegister, router }) => {
   const [mailValue, setMailValue] = useState("");
   const [passValue, setPassValue] = useState("");
   const [isMailFocused, setIsMailFocused] = useState(false);
@@ -18,15 +20,7 @@ const Register = ({ isRegister }) => {
   return (
     <View style={styles.registerContainer}>
       <View style={styles.gameName}>
-        <GradientText
-          text={"NUMBER GAME"}
-          fontSize={40}
-          isGradientFill
-          isGradientStroke
-          strokeWidth={2}
-          gradientColors={["#9E01B7", "#14E585"]}
-          fontFamily={"Gill Sans"}
-        />
+        <ColorfulText text={"NUMBER GAME"} size={40} />
       </View>
       <View style={styles.title}>
         <Text style={styles.registerTitle}>Create Your Account</Text>
@@ -66,11 +60,7 @@ const Register = ({ isRegister }) => {
         ></TextInput>
       </View>
       <View style={styles.registerButtonContainer}>
-        <TouchableOpacity style={styles.registerButton}>
-          <Text style={{ color: "white", fontSize: 24, fontWeight: "bold" }}>
-            Register
-          </Text>
-        </TouchableOpacity>
+        <GreenButton name={"Register"} router={router} />
       </View>
       <View style={styles.signUp}>
         <TouchableOpacity onPress={() => isRegister(true)}>

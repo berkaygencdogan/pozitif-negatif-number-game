@@ -1,8 +1,8 @@
 import { StyleSheet, Text, View } from "react-native";
 import React, { useState } from "react";
 import { backgroundColor } from "@/constants/Colors";
-import Login from "@/components/Login";
-import Register from "@/components/Register";
+import Login from "@/pages/Login";
+import Register from "@/pages/Register";
 import { useRouter } from "expo-router";
 
 const Account = () => {
@@ -13,7 +13,7 @@ const Account = () => {
       {isLogin ? (
         <Login isLogin={setIsLogin} router={router} />
       ) : (
-        <Register isRegister={setIsLogin} />
+        <Register isRegister={setIsLogin} router={router} />
       )}
     </View>
   );
