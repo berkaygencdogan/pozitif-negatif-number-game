@@ -4,7 +4,7 @@ import React from "react";
 const ProfileImage = () => {
   return (
     <View style={styles.profileImageContainer}>
-      <Image src="../assets/images/icon.png" style={styles.profileImage} />
+      <Image src="https://picsum.photos/200" style={styles.profileImage} />
     </View>
   );
 };
@@ -16,6 +16,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
+    overflow: "hidden",
   },
   profileImage: {
     width: 120,
@@ -23,5 +24,6 @@ const styles = StyleSheet.create({
     borderRadius: 100,
     borderWidth: 1,
     borderColor: "yellow",
+    overflow: "hidden",
   },
 });
