@@ -1,6 +1,7 @@
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { Image, StyleSheet, TouchableOpacity, View } from "react-native";
 import React from "react";
 import FontAwesome6 from "@expo/vector-icons/FontAwesome6";
+import { backgroundColor } from "@/constants/Colors";
 
 const HowPlayModal = ({ setIsHowPlay }) => {
   return (
@@ -12,25 +13,18 @@ const HowPlayModal = ({ setIsHowPlay }) => {
         <FontAwesome6 name="circle-xmark" size={24} color="white" />
       </TouchableOpacity>
       <View style={styles.gameMods}>
-        <TouchableOpacity style={styles.mods}>
-          <Text style={{ color: "white" }}>
-            4 Basamaklı rakamları birbirinden farklı bir sayı seç
-          </Text>
-          <Text style={{ color: "white" }}>X 2334 3578 tik</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.mods}>
-          <Text style={{ color: "white" }}>
-            Rakibinin tuttuğu sayıyı tahmin et ve dönen değere göre tahminini
-            güncelle.
-          </Text>
-          <Text style={{ color: "white" }}>
-            4321 -3 1234 +2 -1 3254 +3 3284 +4
-          </Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.mods}>
-          <Text style={{ color: "white" }}>Doğru tahmin edip oyunu kazan</Text>
-          <Text style={{ color: "white" }}>3284 +4 Tik</Text>
-        </TouchableOpacity>
+        <Image
+          src="https://i.hizliresim.com/88bzjbg.png?_gl=1*3ervhy*_ga*MzEzNTI0MTU5LjE3MjY5NDcyNTg.*_ga_M9ZRXYS2YN*MTcyOTExMDU5MS43LjAuMTcyOTExMDU5MS42MC4wLjA."
+          style={styles.howImages}
+        />
+        <Image
+          src="https://i.hizliresim.com/djgxffm.png?_gl=1*v7265m*_ga*MzEzNTI0MTU5LjE3MjY5NDcyNTg.*_ga_M9ZRXYS2YN*MTcyOTExMDU5MS43LjEuMTcyOTExMDYyNS4yNi4wLjA."
+          style={styles.howImages}
+        />
+        <Image
+          src="https://i.hizliresim.com/5njotpa.png?_gl=1*1ep4rvy*_ga*MzEzNTI0MTU5LjE3MjY5NDcyNTg.*_ga_M9ZRXYS2YN*MTcyOTExMDU5MS43LjEuMTcyOTExMDYyNi4yNS4wLjA."
+          style={styles.howImages}
+        />
       </View>
     </View>
   );
@@ -45,7 +39,7 @@ const styles = StyleSheet.create({
     height: "100%",
     display: "flex",
     alignItems: "center",
-    backgroundColor: "blue",
+    backgroundColor: backgroundColor,
     zIndex: 2,
   },
   exitBtn: {
@@ -56,19 +50,15 @@ const styles = StyleSheet.create({
   },
   gameMods: {
     width: "100%",
-    height: "80%",
+    height: "90%",
     justifyContent: "space-around",
     alignItems: "center",
     display: "flex",
   },
-  mods: {
-    width: "60%",
+  howImages: {
+    width: "90%",
     height: "30%",
-    backgroundColor: "red",
-    borderRadius: 20,
-    borderWidth: 5,
-    borderColor: "green",
-    alignItems: "center",
-    justifyContent: "center",
+    overflow: "hidden",
+    resizeMode: "contain",
   },
 });

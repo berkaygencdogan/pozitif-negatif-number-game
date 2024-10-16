@@ -12,6 +12,7 @@ const ColorfulText = ({ text, size }) => {
       strokeWidth={2}
       gradientColors={["#9E01B7", "#14E585"]}
       fontFamily={"Gill Sans"}
+      style={{ position: "absolute", top: "10%" }}
     />
   );
 };

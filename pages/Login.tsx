@@ -82,6 +82,8 @@ const styles = StyleSheet.create({
   },
   gameName: {
     flex: 2,
+    alignItems: "center",
+    justifyContent: "center",
   },
   title: {
     flex: 1,

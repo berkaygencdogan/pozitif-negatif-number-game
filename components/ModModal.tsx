@@ -1,22 +1,35 @@
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import React from "react";
+import { backgroundColor } from "@/constants/Colors";
 import FontAwesome6 from "@expo/vector-icons/FontAwesome6";
+import { useRouter } from "expo-router";
+import React from "react";
+import { StyleSheet, TouchableOpacity, View } from "react-native";
+import ModCards from "./ModCards";
 
 const ModModal = ({ setIsPlay }) => {
+  const router = useRouter();
   return (
     <View style={styles.modalContainer}>
       <TouchableOpacity style={styles.exitBtn} onPress={() => setIsPlay(false)}>
         <FontAwesome6 name="circle-xmark" size={24} color="white" />
       </TouchableOpacity>
       <View style={styles.gameMods}>
-        <TouchableOpacity style={styles.mods}>
-          <Text style={{ color: "white" }}>Online</Text>
+        <TouchableOpacity
+          style={styles.mods}
+          onPress={() => router.push("/Game")}
+        >
+          <ModCards text={"Online"} />
         </TouchableOpacity>
-        <TouchableOpacity style={styles.mods}>
-          <Text style={{ color: "white" }}>Offline</Text>
+        <TouchableOpacity
+          style={styles.mods}
+          onPress={() => router.push("/Game")}
+        >
+          <ModCards text={"Offline"} />
         </TouchableOpacity>
-        <TouchableOpacity style={styles.mods}>
-          <Text style={{ color: "white" }}>2 Kişili</Text>
+        <TouchableOpacity
+          style={styles.mods}
+          onPress={() => router.push("/Game")}
+        >
+          <ModCards text={"2 Kişi"} />
         </TouchableOpacity>
       </View>
     </View>
@@ -32,7 +45,7 @@ const styles = StyleSheet.create({
     height: "100%",
     display: "flex",
     alignItems: "center",
-    backgroundColor: "blue",
+    backgroundColor: backgroundColor,
     zIndex: 2,
   },
   exitBtn: {
@@ -49,13 +62,15 @@ const styles = StyleSheet.create({
     display: "flex",
   },
   mods: {
-    width: "60%",
+    width: "100%",
     height: "30%",
-    backgroundColor: "red",
     borderRadius: 20,
-    borderWidth: 5,
-    borderColor: "green",
     alignItems: "center",
     justifyContent: "center",
+  },
+  button: {
+    padding: 15,
+    alignItems: "center",
+    borderRadius: 5,
   },
 });
