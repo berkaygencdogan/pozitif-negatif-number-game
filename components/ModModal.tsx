@@ -15,19 +15,19 @@ const ModModal = ({ setIsPlay }) => {
       <View style={styles.gameMods}>
         <TouchableOpacity
           style={styles.mods}
-          onPress={() => router.push("/Game")}
+          onPress={() => router.push("/MultiPlayerScreen")}
         >
           <ModCards text={"Online"} />
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.mods}
-          onPress={() => router.push("/Game")}
+          onPress={() => router.push("/SinglePlayerScreen")}
         >
           <ModCards text={"Offline"} />
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.mods}
-          onPress={() => router.push("/Game")}
+          onPress={() => router.push("/LocalMultiPlayerScreen")}
         >
           <ModCards text={"2 Kişi"} />
         </TouchableOpacity>
