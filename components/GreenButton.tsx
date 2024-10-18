@@ -1,11 +1,15 @@
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import React from "react";
 
-const GreenButton = ({ router, name }) => {
+const GreenButton = ({ router, name, onpress }) => {
   return (
     <TouchableOpacity
       style={styles.loginButton}
-      onPress={() => router.push(name === "Login" ? "/Home" : "/Account")}
+      onPress={
+        onpress != ""
+          ? onpress
+          : () => router.push(name === "Login" ? "/Home" : "/Account")
+      }
     >
       <Text style={{ color: "white", fontSize: 24, fontWeight: "bold" }}>
         {name}

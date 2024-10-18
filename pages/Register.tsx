@@ -60,7 +60,7 @@ const Register = ({ isRegister, router }) => {
         ></TextInput>
       </View>
       <View style={styles.registerButtonContainer}>
-        <GreenButton name={"Register"} router={router} />
+        <GreenButton name={"Register"} router={router} onpress={""} />
       </View>
       <View style={styles.signUp}>
         <TouchableOpacity onPress={() => isRegister(true)}>

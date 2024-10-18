@@ -11,6 +11,13 @@ import {
 import React, { useState, useEffect } from "react";
 import generateRandomNumber from "../backend/numberGenerator"; // Rastgele sayı üreten fonksiyonu import et
 import checkGuess from "../backend/gameLogic"; // Tahmin kontrol fonksiyonunu import et
+import ColorfulText from "@/components/ColorfulText";
+import { backgroundColor } from "@/constants/Colors";
+import GreenButton from "@/components/GreenButton";
+import { router } from "expo-router";
+import { LinearGradient } from "expo-linear-gradient";
+import Entypo from "@expo/vector-icons/Entypo";
+import AntDesign from "@expo/vector-icons/AntDesign";
 
 const MAX_ATTEMPTS = 8; // Maksimum tahmin hakkı
 
@@ -56,7 +63,7 @@ const SinglePlayerScreen = () => {
     const { plus: newPlus, minus: newMinus } = checkGuess(guess, targetNumber);
     setPlus(newPlus); // Doğru yer sayısını güncelle
     setMinus(newMinus); // Yanlış yer sayısını güncelle
-    setFeedback(`${newPlus} doğru yerde, ${newMinus} yanlış yerde.`);
+    setFeedback(`${newPlus} sayı doğru yerde, ${newMinus} sayı yanlış yerde.`);
     setAttempts((prevAttempts) => prevAttempts + 1); // Deneme sayısını artır
 
     // Tahmin ve geri bildirimleri diziye ekle
@@ -97,24 +104,41 @@ const SinglePlayerScreen = () => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Tek Oyuncu Modu</Text>
+      <View style={styles.title}>
+        <ColorfulText size={25} text={"TEK OYUNCU MODU"} />
+      </View>
       <TextInput
         style={styles.input}
         placeholder="Tahmininizi girin"
         keyboardType="numeric"
         value={guess}
+        placeholderTextColor={"white"}
         onChangeText={setGuess}
       />
-      <Button title="Tahmin Et" onPress={handleGuess} />
+      <GreenButton name={"Tahmin Et"} router={router} onpress={handleGuess} />
       {feedback ? <Text style={styles.feedback}>{feedback}</Text> : null}
 
       {/* Tahminleri listele */}
       <FlatList
         data={guesses}
         renderItem={({ item }) => (
-          <Text
-            style={styles.guessText}
-          >{`${item.guess} -> ${item.plus} doğru yerde, ${item.minus} yanlış yerde`}</Text>
+          <LinearGradient
+            colors={["#9E01B7", "#14E585"]} // Gradient renkleri
+            start={{ x: 0, y: 1 }}
+            style={styles.guessContainer}
+          >
+            <View style={styles.guessViewLeft}>
+              <Text style={styles.guessText}>{item.guess}</Text>
+            </View>
+            <View style={styles.guessView}>
+              <Entypo name="plus" size={30} color="green" />
+              <Text style={styles.guessText}>{item.plus}</Text>
+            </View>
+            <View style={styles.guessView}>
+              <AntDesign name="minus" size={30} color="red" />
+              <Text style={styles.guessText}>{item.minus}</Text>
+            </View>
+          </LinearGradient>
         )}
         keyExtractor={(item, index) => index.toString()}
         style={styles.guessList}
@@ -155,11 +179,14 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     padding: 20,
+    backgroundColor: backgroundColor,
   },
   title: {
-    fontSize: 24,
-    fontWeight: "bold",
-    marginBottom: 20,
+    width: "100%",
+    height: "10%",
+    top: "-5%",
+    justifyContent: "center",
+    alignItems: "center",
   },
   input: {
     height: 50,
@@ -178,9 +205,40 @@ const styles = StyleSheet.create({
     marginTop: 20,
     width: "100%",
   },
+  guessContainer: {
+    width: "100%",
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "center",
+    borderWidth: 1,
+    borderColor: "red",
+    borderRadius: 20,
+    marginBottom: 5,
+  },
+  guessView: {
+    width: "30%",
+    height: "100%",
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-around",
+    borderLeftWidth: 1,
+    borderColor: "red",
+    marginBottom: 5,
+  },
+  guessViewLeft: {
+    width: "40%",
+    height: "100%",
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    marginBottom: 5,
+  },
   guessText: {
     fontSize: 16,
     marginVertical: 5,
+    color: "white",
   },
   modalContainer: {
     flex: 1,

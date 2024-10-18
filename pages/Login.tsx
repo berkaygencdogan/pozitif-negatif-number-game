@@ -61,7 +61,7 @@ const Login = ({ isLogin, router }) => {
         ></TextInput>
       </View>
       <View style={styles.loginButtonContainer}>
-        <GreenButton name={"Login"} router={router} />
+        <GreenButton name={"Login"} router={router} onpress={""} />
       </View>
       <View style={styles.signUp}>
         <TouchableOpacity onPress={() => isLogin(false)}>
